@@ -33,7 +33,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('admin/posts*') ? 'active' : '' }}" href="{{ route('admin.posts.index') }}">Posts</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -60,10 +62,11 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
+                                    
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
+                                    
                                 </div>
                             </li>
                         @endguest
