@@ -77,9 +77,16 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $data = $request->all();
+
+        $post->fill($data);
+        $data['slug'] = Str::slug($request->title, '-');
+
+        $post->save();
+
+        return redirect()->route('posts.show', $post->id);
     }
 
     /**
