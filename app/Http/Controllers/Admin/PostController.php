@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 use App\Models\Post;
 
@@ -28,7 +29,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.posts.create');
     }
 
     /**
@@ -39,7 +40,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->title, '-');
+
+        $post = Post::create($data);
+
+        return redirect()->route('admin.posts.show', $post);
     }
 
     /**
@@ -84,6 +90,6 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }
