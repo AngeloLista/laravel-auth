@@ -25,7 +25,18 @@
                     <td>{{ $post->title }}</td>
                     <td>{{ $post->slug }}</td>
                     <td>{{ $post->created_at }}</td>
-                    <td class="d-flex justify-content-center align-items-center">Actions</td>
+                    <td class="d-flex justify-content-center align-items-center">
+                      {{-- Back --}}
+                      <a class="btn btn-primary mr-1" href="{{ route('admin.posts.show', $post->id) }}">Details</a>
+                      {{-- Edit --}}
+                      <a class="btn btn-secondary mr-1"href="{{ route('admin.posts.edit', $post->id) }}">Edit</a>
+                      {{-- Delete --}}
+                      <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST" class="delete-form" data-name="{{ $post->title }}">
+                          @csrf
+                          @method('DELETE')
+                          <button class="btn btn-danger mr-1" type="submit">Delete</button>
+                      </form>
+                    </td>
                 </tr>
                 @empty
                 <tr><td colspan="5"> Non ci sono Post</td></tr>
