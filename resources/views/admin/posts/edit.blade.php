@@ -2,7 +2,7 @@
 
 @section('content')
 <section id="post-edit" class="container d-flex justify-content-center align-items-center">
-    <form method="post" action="{{ route('admin.posts.update') }}">
+    <form method="post" action="{{ route('admin.posts.update', $post->id) }}">
         @csrf
 
         <div class="row">
@@ -22,7 +22,7 @@
                 <label for="image">Image Url: </label>
                 <input class="form-control" type="text" name="image" id="image" value="{{ old('image', $post->image) }}">
             </div>
-            
+            {{-- Save --}}
             <div class="d-flex justify-content-end col-12">
                 <button type="submit" class="btn btn-primary">Save</button>
             </div>
