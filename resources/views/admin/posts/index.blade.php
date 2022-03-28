@@ -2,8 +2,10 @@
 
 @section('content')
     <div class="container">
-        <header>
+        <header class="d-flex justify-content-between align-items-center">
             <h1>I miei post</h1>
+            {{-- Create --}}
+            <a class="btn btn-warning mr-1" href="{{ route('admin.posts.create') }}">Create</a>
         </header>
 
         <table class="table">
@@ -12,7 +14,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Title</th>
                 <th scope="col">Slug</th>
-                <th scope="col">Creato il</th>
+                <th scope="col">Created at</th>
                 <th scope="col"></th>
               </tr>
             </thead>
@@ -26,7 +28,7 @@
                     <td>{{ $post->slug }}</td>
                     <td>{{ $post->created_at }}</td>
                     <td class="d-flex justify-content-center align-items-center">
-                      {{-- Back --}}
+                      {{-- Details --}}
                       <a class="btn btn-primary mr-1" href="{{ route('admin.posts.show', $post->id) }}">Details</a>
                       {{-- Edit --}}
                       <a class="btn btn-secondary mr-1"href="{{ route('admin.posts.edit', $post->id) }}">Edit</a>
