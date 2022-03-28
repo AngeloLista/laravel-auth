@@ -44,7 +44,7 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required|string|unique:posts|max:50',
             'content' => 'required|string',
-            'image' => 'string|max:255',
+            'image' => 'nullable|url|max:255',
         ]);
 
         $data = $request->all();
@@ -89,7 +89,7 @@ class PostController extends Controller
         $request->validate([
             'title' => ['required', 'string', Rule::unique('posts')->ignore($post->id), 'max:50'],
             'content' => 'required|string',
-            'image' => 'string|max:255',
+            'image' => 'nullable|url|max:255',
         ]);
 
         $data = $request->all();
