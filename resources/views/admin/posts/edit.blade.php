@@ -2,7 +2,18 @@
 
 @section('content')
 <section id="post-edit" class="container d-flex justify-content-center align-items-center">
+    
     <div class="container">
+        <h1 class="mb-3">Edit -> {{ $post->title }}</h1>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form method="post" action="{{ route('admin.posts.update', $post->id) }}">
             @method('PUT')
             @csrf

@@ -42,7 +42,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|string|unique:comics|max:50',
+            'title' => 'required|string|unique:posts|max:50',
             'content' => 'required|string',
             'image' => 'string|max:255',
         ]);
