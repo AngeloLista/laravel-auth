@@ -34,7 +34,10 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link {{ Request::is('admin/posts*') ? 'active' : '' }}" href="{{ route('admin.posts.index') }}">Posts</a>
+                            <a class="nav-link {{ Request::is('admin/posts') ? 'active' : '' }}" href="{{ route('admin.posts.index') }}">Posts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('admin/posts/create') ? 'active' : '' }}" href="{{ route('admin.posts.create') }}">Create New Post</a>
                         </li>
                     </ul>
 
