@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 use App\Models\Post;
 
@@ -40,6 +41,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required|string|unique:comics|max:50',
+            'content' => 'required|string',
+            'image' => 'string|max:255',
+        ]);
+
         $data = $request->all();
         $data['slug'] = Str::slug($request->title, '-');
 
@@ -79,6 +86,12 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        $request->validate([
+            'title' => ['required', 'string', Rule::unique('posts')->ignore($post->id), 'max:50'],
+            'content' => 'required|string',
+            'image' => 'string|max:255',
+        ]);
+
         $data = $request->all();
 
         $post->fill($data);
@@ -86,7 +99,7 @@ class PostController extends Controller
 
         $post->save();
 
-        return redirect()->route('posts.show', $post->id);
+        return redirect()->route('admin.posts.show', $post->id);
     }
 
     /**
