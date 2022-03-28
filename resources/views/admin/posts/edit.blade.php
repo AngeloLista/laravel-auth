@@ -4,6 +4,7 @@
 <section id="post-edit" class="container d-flex justify-content-center align-items-center">
     <div class="container">
         <form method="post" action="{{ route('admin.posts.update', $post->id) }}">
+            @method('PUT')
             @csrf
             <div class="row">
                 <div class="col-12 mb-3 form-group">
