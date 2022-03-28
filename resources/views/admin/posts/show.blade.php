@@ -10,7 +10,7 @@
             <div class="col-2 mb-3"><img class="img-fluid" src="{{ $post->image }}" alt="{{ $post->slug }}"></div>
             <div class="col-12 d-flex justify-content-end">
                 {{-- Edit --}}
-                <a class="btn btn-secondary mr-1" href="{{ route('admin.posts.edit', $post) }}">Edit</a>
+                <a class="btn btn-primary mr-1" href="{{ route('admin.posts.edit', $post) }}">Edit</a>
                 {{-- Delete --}}
                 <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST" class="delete-form" data-name="{{ $post->title }}">
                     @csrf
@@ -18,7 +18,7 @@
                     <button class="btn btn-danger mr-1" type="submit">Delete</button>
                 </form>
                 {{-- Back --}}
-                <a class="btn btn-primary" href="{{ route('admin.posts.index') }}">Back to Index</a>
+                <a class="btn btn-secondary" href="{{ route('admin.posts.index') }}">Back to Index</a>
             </div>
         </div>
     </section>
@@ -36,4 +36,8 @@
             });
         })
     </script>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/delete-confirmation.js') }}"></script>
 @endsection
