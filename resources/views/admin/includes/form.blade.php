@@ -27,7 +27,7 @@
         <div class="col-12 mb-3 form-group">
             <div class="label">Content: </div>
             <textarea class="form-control" type="text"
-            rows="5"  name="content" id="content"> {{ old('content', $post->content) }}</textarea>
+            rows="5"  name="content" id="content">{{ old('content', $post->content) }}</textarea>
         </div>
 
         <div class="col-12 mb-3 form-group">
