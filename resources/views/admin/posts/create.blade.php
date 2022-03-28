@@ -24,6 +24,9 @@
                 </div>
                 
                 <div class="d-flex justify-content-end col-12">
+                    {{-- Back to List --}}
+                    <a class="btn btn-secondary mr-3" href="{{ route('admin.posts.index')}}">Back</a>
+                    {{-- Create --}}
                     <button type="submit" class="btn btn-primary">Create</button>
                 </div>
 

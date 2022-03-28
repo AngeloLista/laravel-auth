@@ -22,8 +22,10 @@
                 <label for="image">Image Url: </label>
                 <input class="form-control" type="text" name="image" id="image" value="{{ old('image', $post->image) }}">
             </div>
-            {{-- Save --}}
             <div class="d-flex justify-content-end col-12">
+                {{-- Back to List --}}
+                <a class="btn btn-secondary mr-3" href="{{ route('admin.posts.index')}}">Back</a>
+                {{-- Save --}}
                 <button type="submit" class="btn btn-primary">Save</button>
             </div>
 
