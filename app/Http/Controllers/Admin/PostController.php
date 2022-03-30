@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Illuminate\Validation\Rule;
 
 use App\Models\Post;
+
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class PostController extends Controller
 {
@@ -45,8 +47,8 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => 'required|string|unique:posts|max:50',
-            'content' => 'required|string',
             'image' => 'nullable|url|max:255',
+            'content' => 'required|string',
         ]);
 
         $data = $request->all();
@@ -96,8 +98,8 @@ class PostController extends Controller
 
         $data = $request->all();
 
-        $post->fill($data);
         $data['slug'] = Str::slug($request->title, '-');
+        $post->fill($data);
 
         $post->save();
 
